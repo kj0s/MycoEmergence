@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import random
 
 ENERGY_START = 5
+ENERGY_DEDUCT_COST = 1
 
 def make_board(n):
     nutrients = np.random.randint(0, 10, size=(n, n))
@@ -36,7 +37,7 @@ def move(board):
             break
         best = sorted(possible, key=lambda x: x[0], reverse=True)[0]
         path.append((best[1], best[2]))
-        energy += best[0] - 1
+        energy += best[0] - ENERGY_DEDUCT_COST
         stack.append((best[0], best[1], best[2]))
     return path
 
