@@ -8,7 +8,7 @@ EPSILON = 0.2
 
 def make_board(n):
     nutrients = np.random.randint(0, 10, size=(n, n))
-    plt.imshow(nutrients, cmap='YlGnBu')
+    plt.imshow(nutrients, cmap='Greys')
     plt.colorbar(label="Nutrient level")
     # plt.show()
     return nutrients
@@ -57,21 +57,21 @@ def move(board):
     return finished_paths
 
 def draw_paths(board, paths):
-    plt.figure(figsize=(6,6))
-    plt.imshow(board, cmap='YlGnBu')
+    plt.figure(figsize=(8,8))
+    plt.imshow(board, cmap='Greys')
     plt.colorbar(label="Nutrient level")
     plt.gca().invert_yaxis()
 
-    colors = plt.cm.magma(np.linspace(0, 1, len(paths)))  # color each branch differently
+    colors = plt.cm.viridis(np.linspace(0, 1, len(paths)))
     for path, color in zip(paths, colors):
         xs = [y for x, y in path]
         ys = [x for x, y in path]
-        plt.plot(xs, ys, color=color, linewidth=2, marker="o")
+        plt.plot(xs, ys, color=color, linewidth=2, marker="x")
 
     plt.title("Branching Paths")
     plt.show()
 
 
-board = make_board(10)
+board = make_board(40)
 paths = move(board)
 draw_paths(board, paths)
