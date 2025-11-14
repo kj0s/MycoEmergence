@@ -7,7 +7,7 @@ ENERGY_DEDUCT_COST = 1
 
 def make_board(n):
     nutrients = np.random.randint(0, 10, size=(n, n))
-    plt.imshow(nutrients, cmap='YlGn')
+    plt.imshow(nutrients, cmap='YlGnBu')
     plt.colorbar(label="Nutrient level")
     plt.show()
     return nutrients
@@ -44,13 +44,13 @@ def move(board):
 
 def draw_path(board, path):
     plt.figure(figsize=(6,6))
-    plt.imshow(board, cmap='YlGn')
+    plt.imshow(board, cmap='YlGnBu')
     plt.colorbar(label="Nutrient level")
 
     xs = [y for x, y in path]
     ys = [x for x, y in path]
 
-    plt.plot(xs, ys, color="red", linewidth=2, marker="o")
+    plt.plot(xs, ys, color="pink", linewidth=2, marker="o")
     plt.title("Optimal Path")
     plt.gca().invert_yaxis()
     plt.show()
